@@ -3,6 +3,7 @@ package com.github.tartaricacid.touhoulittlemaid.client.renderer.sections.events
 import com.github.tartaricacid.touhoulittlemaid.TouhouLittleMaid;
 import com.github.tartaricacid.touhoulittlemaid.client.renderer.sections.SectionGeometryBlockEntityRenderDispatcher;
 import com.github.tartaricacid.touhoulittlemaid.client.renderer.sections.dynamic.DynamicChunkBuffers;
+import com.github.tartaricacid.touhoulittlemaid.compat.iris.IrisCompat;
 import com.github.tartaricacid.touhoulittlemaid.compat.sodium.SodiumCompat;
 import net.minecraft.client.renderer.RenderType;
 import net.neoforged.api.distmarker.Dist;
@@ -17,8 +18,6 @@ import org.joml.Vector3f;
  */
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = TouhouLittleMaid.MOD_ID, value = Dist.CLIENT)
 public class SectionGeometryRendererGameEvents {
-
-
     @SubscribeEvent
     public static void onAddSectionGeometry(AddSectionGeometryEvent event) {
         event.addRenderer(new SectionGeometryBlockEntityRenderDispatcher(event.getSectionOrigin().immutable()));
@@ -40,7 +39,11 @@ public class SectionGeometryRendererGameEvents {
     }
 
     @SubscribeEvent
-    public static void onRenderVanillaDynamicCutoutRenderType(RenderLevelStageEvent event) {
+    public static void onRenderDynamicCutoutRenderType(RenderLevelStageEvent event) {
+        if (IrisCompat.isRenderingShadow()) {
+            return;
+        }
+
         if (event.getStage() != SodiumCompat.getCutoutRenderStage()) {
            return;
         }
@@ -54,7 +57,11 @@ public class SectionGeometryRendererGameEvents {
     }
 
     @SubscribeEvent
-    public static void onRenderVanillaDynamicTranslucentRenderType(RenderLevelStageEvent event) {
+    public static void onRenderDynamicTranslucentRenderType(RenderLevelStageEvent event) {
+        if (IrisCompat.isRenderingShadow()) {
+            return;
+        }
+
         if (event.getStage() != RenderLevelStageEvent.Stage.AFTER_PARTICLES) {
             return;
         }

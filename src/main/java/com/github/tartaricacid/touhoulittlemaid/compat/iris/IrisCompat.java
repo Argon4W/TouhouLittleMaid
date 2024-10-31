@@ -21,6 +21,10 @@ public final class IrisCompat {
         return INSTALLED;
     }
 
+    public static boolean isRenderingShadow() {
+        return IrisCompat.isInstalled() && DynamicChunkBufferIrisCompat.isRenderingShadow();
+    }
+
     public static RenderType unwrapIrisRenderType(RenderType renderType) {
         return IrisCompat.isInstalled() ? DynamicChunkBufferIrisCompat.unwrap(renderType) : renderType;
     }
