@@ -16,7 +16,6 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.RegisterShadersEvent;
 
 import java.io.IOException;
-import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
@@ -64,7 +63,7 @@ public class SectionGeometryRenderTypeEvents {
         event.registerShader(new ShaderInstance(event.getResourceProvider(), ResourceLocation.fromNamespaceAndPath(TouhouLittleMaid.MOD_ID, "rendertype_entity_translucent_chunk"), DefaultVertexFormat.NEW_ENTITY), shader -> entityTranslucentChunkShader = shader);
     }
 
-    public static RenderType getItemEntityTranslucentCUll() {
+    public static RenderType getItemEntityTranslucentCull() {
         return ITEM_ENTITY_TRANSLUCENT_CULL_CHUNK.get();
     }
 

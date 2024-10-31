@@ -178,7 +178,7 @@ public class LightAwareSectionGeometryRenderContext implements SectionGeometryRe
 
     @Override
     public MultiBufferSource getUncachedItemBufferSource() {
-        return SodiumCompat.isInstalled() ? pRenderType -> new QuadLighterVertexConsumer(context, pos) : ignored -> new TransformingVertexPipeline(context.getOrCreateChunkBuffer(SectionGeometryRenderTypeEvents.getItemEntityTranslucentCUll()), transformation);
+        return SodiumCompat.isInstalled() ? pRenderType -> new QuadLighterVertexConsumer(context, pos) : ignored -> new TransformingVertexPipeline(context.getOrCreateChunkBuffer(SectionGeometryRenderTypeEvents.getItemEntityTranslucentCull()), transformation);
     }
 
     @Override

@@ -35,8 +35,8 @@ public class SectionGeometryRendererGameEvents {
         }
 
         Vector3f position = event.getCamera().getPosition().toVector3f();
-        event.getLevelRenderer().renderSectionLayer(SectionGeometryRenderTypeEvents.getItemEntityTranslucentCUll(), position.x, position.y, position.z, event.getModelViewMatrix(), event.getProjectionMatrix());
-        event.getLevelRenderer().renderBuffers.bufferSource().endBatch(SectionGeometryRenderTypeEvents.getItemEntityTranslucentCUll());
+        event.getLevelRenderer().renderSectionLayer(SectionGeometryRenderTypeEvents.getItemEntityTranslucentCull(), position.x, position.y, position.z, event.getModelViewMatrix(), event.getProjectionMatrix());
+        event.getLevelRenderer().renderBuffers.bufferSource().endBatch(SectionGeometryRenderTypeEvents.getItemEntityTranslucentCull());
     }
 
     @SubscribeEvent

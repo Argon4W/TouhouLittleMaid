@@ -26,7 +26,7 @@ public class RenderTypeMixin implements RenderTypeExtension {
 
     @WrapOperation(method = "<clinit>", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/RenderType;CHUNK_BUFFER_LAYERS:Lcom/google/common/collect/ImmutableList;"))
     private static void modifyChunkBufferLayers(ImmutableList<RenderType> value, Operation<Void> original) {
-        original.call(ImmutableList.builder().addAll(value).add(SectionGeometryRenderTypeEvents.getItemEntityTranslucentCUll()).build());
+        original.call(ImmutableList.builder().addAll(value).add(SectionGeometryRenderTypeEvents.getItemEntityTranslucentCull()).build());
     }
 
     @Override
