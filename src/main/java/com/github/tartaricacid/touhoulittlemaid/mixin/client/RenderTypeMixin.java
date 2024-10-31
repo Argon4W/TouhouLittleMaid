@@ -1,6 +1,6 @@
 package com.github.tartaricacid.touhoulittlemaid.mixin.client;
 
-import com.github.tartaricacid.touhoulittlemaid.client.event.ClientRenderTypeEvents;
+import com.github.tartaricacid.touhoulittlemaid.client.renderer.sections.events.SectionGeometryRenderTypeEvents;
 import com.github.tartaricacid.touhoulittlemaid.client.renderer.sections.RenderTypeExtension;
 import com.google.common.collect.ImmutableList;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
@@ -26,7 +26,7 @@ public class RenderTypeMixin implements RenderTypeExtension {
 
     @WrapOperation(method = "<clinit>", at = @At(value = "FIELD", target = "Lnet/minecraft/client/renderer/RenderType;CHUNK_BUFFER_LAYERS:Lcom/google/common/collect/ImmutableList;"))
     private static void modifyChunkBufferLayers(ImmutableList<RenderType> value, Operation<Void> original) {
-        original.call(ImmutableList.builder().addAll(value).add(ClientRenderTypeEvents.get()).build());
+        original.call(ImmutableList.builder().addAll(value).add(SectionGeometryRenderTypeEvents.getItemEntityTranslucentCUll()).build());
     }
 
     @Override

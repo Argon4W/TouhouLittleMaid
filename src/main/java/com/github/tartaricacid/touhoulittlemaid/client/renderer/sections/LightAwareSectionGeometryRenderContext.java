@@ -1,6 +1,6 @@
 package com.github.tartaricacid.touhoulittlemaid.client.renderer.sections;
 
-import com.github.tartaricacid.touhoulittlemaid.client.event.ClientRenderTypeEvents;
+import com.github.tartaricacid.touhoulittlemaid.client.renderer.sections.events.SectionGeometryRenderTypeEvents;
 import com.github.tartaricacid.touhoulittlemaid.client.renderer.sections.cache.CachedEntityModel;
 import com.github.tartaricacid.touhoulittlemaid.client.renderer.sections.cache.RendererBakedModelsCache;
 import com.github.tartaricacid.touhoulittlemaid.client.renderer.sections.dynamic.DynamicChunkBuffers;
@@ -49,9 +49,7 @@ public class LightAwareSectionGeometryRenderContext implements SectionGeometryRe
         this.pos = pos;
         this.blockEntity = blockEntity;
         this.randomSource = RandomSource.createNewThreadLocalInstance();
-        this.transformation = SodiumCompat.isInstalled() ?
-                new Transformation(new Matrix4f(context.getPoseStack().last().pose())) :
-                new Transformation(new Matrix4f(context.getPoseStack().last().pose()).translate(regionOrigin.getX(), regionOrigin.getY(), regionOrigin.getZ()));
+        this.transformation = new Transformation(new Matrix4f(context.getPoseStack().last().pose()));
     }
 
     @Override
@@ -180,7 +178,7 @@ public class LightAwareSectionGeometryRenderContext implements SectionGeometryRe
 
     @Override
     public MultiBufferSource getUncachedItemBufferSource() {
-        return SodiumCompat.isInstalled() ? pRenderType -> new QuadLighterVertexConsumer(context, pos) : ignored -> new TransformingVertexPipeline(context.getOrCreateChunkBuffer(ClientRenderTypeEvents.get()), transformation);
+        return SodiumCompat.isInstalled() ? pRenderType -> new QuadLighterVertexConsumer(context, pos) : ignored -> new TransformingVertexPipeline(context.getOrCreateChunkBuffer(SectionGeometryRenderTypeEvents.getItemEntityTranslucentCUll()), transformation);
     }
 
     @Override

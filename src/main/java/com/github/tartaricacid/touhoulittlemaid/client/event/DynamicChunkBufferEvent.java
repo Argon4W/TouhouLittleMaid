@@ -15,8 +15,8 @@ import net.neoforged.fml.common.EventBusSubscriber;
 public class DynamicChunkBufferEvent {
     @SubscribeEvent
     public static void doDynamicChunkBufferEvent(ReloadDynamicChunkBufferEvent event) {
-        DynamicChunkBuffers.markCutoutChunkBuffer(TileEntityCChessRenderer.TEXTURE, TileEntityCChessRenderer.CCHESS_RENDER_TYPE);
-        DynamicChunkBuffers.markCutoutChunkBuffer(TileEntityCChessRenderer.PIECES_TEXTURE, TileEntityCChessRenderer.CCHESS_PIECES_RENDER_TYPE);
-        DynamicChunkBuffers.markCutoutChunkBuffer(PicnicMatRender.TEXTURE, PicnicMatRender.RENDER_TYPE);
+        DynamicChunkBuffers.markCutoutChunkBuffer(TileEntityCChessRenderer.TEXTURE);
+        DynamicChunkBuffers.markCutoutChunkBuffer(TileEntityCChessRenderer.PIECES_TEXTURE);
+        DynamicChunkBuffers.markCutoutChunkBuffer(PicnicMatRender.TEXTURE);
     }
 }

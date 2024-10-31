@@ -1,6 +1,6 @@
 {
-    "vertex": "touhou_little_maid:rendertype_item_entity_chunk",
-    "fragment": "touhou_little_maid:rendertype_item_entity_chunk",
+    "vertex": "touhou_little_maid:rendertype_item_entity_translucent_cull_chunk",
+    "fragment": "touhou_little_maid:rendertype_item_entity_translucent_cull_chunk",
     "samplers": [
         { "name": "Sampler0" },
         { "name": "Sampler2" }
